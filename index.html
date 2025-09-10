@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>David & Vianney’s Wedding</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora&display=swap"
     rel="stylesheet"
@@ -83,18 +84,18 @@
       font-weight: 700;
       color: #556b2f;
       margin-top: 0;
-      font-size: 3.5em;
       margin-bottom: 0;
+      font-size: clamp(2em, 5vw, 3.5em);
     }
     h3 {
       font-family: 'Lemon Tuesday', cursive;
-      font-size: 2em;
+      font-size: clamp(1.3em, 3.5vw, 2em);
       color: #344336;
       margin: 0;
     }
     h2 {
       font-family: 'Blastine personal use', sans-serif;
-      font-size: 2.5em;
+      font-size: clamp(1.8em, 4vw, 2.5em);
       padding-top: 20px;
       padding-left: 5px;
       letter-spacing: 1px;
@@ -102,7 +103,7 @@
       margin: 0;
     }
     header p {
-      font-size: 1.5em;
+      font-size: clamp(1.2em, 3vw, 1.5em);
       color: #f7e7ce;
       font-family: 'Playfair Display', serif;
       margin-top: 10px;
@@ -161,8 +162,8 @@
       background-color: #344336;
       color: #fff;
       text-decoration: none;
-      padding: 24px 38px;
-      font-size: 1.2em;
+      padding: 16px 28px;
+      font-size: clamp(1em, 3.5vw, 1.2em);
       border-radius: 8px;
       font-family: 'Alice', serif;
       transition: background-color 0.3s ease;
@@ -172,7 +173,7 @@
     }
     p {
       font-family: 'Alice', serif;
-      font-size: 1.1em;
+      font-size: clamp(1em, 2.5vw, 1.1em);
       line-height: 1.6;
     }
     .photos {
@@ -183,8 +184,8 @@
       margin-top: 20px;
     }
     .photos img {
-      width: 500px;
-      height: 315px;
+      max-width: 100%;
+      height: auto;
       object-fit: cover;
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -268,12 +269,33 @@
         display: flex;
       }
       .nav-links li {
-        margin: 10px 0;
+        margin: 15px 0;
         text-align: center;
       }
-      .photos img {
+      .section-box,
+      .section-box-new {
+        padding: 15px;
+      }
+      iframe {
+        height: 250px;
+      }
+    }
+
+    /* Extra small screens */
+    @media (max-width: 480px) {
+      header {
+        padding: 40px 15px;
+      }
+      header h1 {
+        font-size: 1.8em;
+      }
+      .rsvp-button {
         width: 100%;
-        height: auto;
+        display: block;
+        text-align: center;
+      }
+      footer p {
+        font-size: 0.9em;
       }
     }
   </style>
@@ -284,7 +306,6 @@
       <button class="menu-toggle" aria-label="Toggle menu">☰</button>
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
-        <!-- <li><a href="#story">Our Story</a></li> -->
         <li><a href="#details">Details</a></li>
         <li><a href="#timeline">Timeline</a></li>
         <li><a href="#attire">Attire Guide</a></li>
