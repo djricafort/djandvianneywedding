@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>David & Vianney’s Wedding</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora&display=swap"
+    rel="stylesheet"
+  />
+  <link href="https://fonts.cdnfonts.com/css/blastine-personal-use" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/lemon-tuesday" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alice&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Lora', serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      color: #333;
+    }
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.9);
+      min-height: 100vh;
+      padding-top: 60px; /* space for navbar */
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(138, 154, 91, 0.95);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 2em;
+      background: none;
+      border: none;
+      color: #f7e7ce;
+      cursor: pointer;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li {
+      margin: 0 25px;
+    }
+    .nav-links li a {
+      color: #f7e7ce;
+      font-family: 'Playfair Display', serif;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1em;
+      transition: color 0.3s;
+    }
+    .nav-links li a:hover {
+      color: #ffffff;
+    }
+
+    header {
+      background-color: rgba(138, 154, 91, 0.9);
+      text-align: center;
+      padding: 60px 20px;
+      color: white;
+    }
+    header h1{
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: #556b2f;
+      margin-top: 0;
+      font-size: 3.5em;
+      margin-bottom: 0;
+    }
+    h3 {
+      font-family: 'Lemon Tuesday', cursive;
+      font-size: 2em;
+      color: #344336;
+      margin: 0;
+    }
+    h2 {
+      font-family: 'Blastine personal use', sans-serif;
+      font-size: 2.5em;
+      padding-top: 20px;
+      padding-left: 5px;
+      letter-spacing: 1px;
+      line-height: 1.2;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.5em;
+      color: #f7e7ce;
+      font-family: 'Playfair Display', serif;
+      margin-top: 10px;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .section-box {
+      background-color: rgba(247, 231, 206, 0.9);
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .section-box-new{
+      background-color: rgba(239, 237, 231, 1);
+      border-radius: 0;
+      padding: 25px;
+      max-width: 100%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .section-box.image-only {
+      padding: 0;
+      margin: 0;
+      max-width: 100%;
+      background: none;
+      border-radius: 0;
+      box-shadow: none;
+      font-family: 'Blastine personal use', sans-serif;
+    }
+    .section-box.image-only img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .overlay-link {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+    .rsvp-button {
+      background-color: #344336;
+      color: #fff;
+      text-decoration: none;
+      padding: 24px 38px;
+      font-size: 1.2em;
+      border-radius: 8px;
+      font-family: 'Alice', serif;
+      transition: background-color 0.3s ease;
+    }
+    .rsvp-button:hover {
+      background-color: #4b5e45;
+    }
+    p {
+      font-family: 'Alice', serif;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+    .photos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .photos img {
+      width: 500px;
+      height: 315px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+    }
+    .photos img:hover {
+      transform: scale(1.05);
+    }
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1em;
+      font-family: 'Lora', serif;
+    }
+    form button {
+      background-color: #8a9a5b;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      font-family: 'Playfair Display', serif;
+    }
+    form button:hover {
+      background-color: #6e7f44;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(138, 154, 91, 0.95);
+      color: #f7e7ce;
+      font-family: 'Playfair Display', serif;
+    }
+    iframe {
+      border: 0;
+      border-radius: 10px;
+      width: 100%;
+      height: 300px;
+      margin-bottom: 30px;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    .attire-guide {
+      font-family: 'Playfair Display', serif;
+      color: #556b2f;
+      background-color: #f7e7cecc;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+    }
+    .attire-guide h3 {
+      margin-top: 0;
+    }
+    .attire-guide ul {
+      list-style-type: square;
+      margin-left: 20px;
+    }
+
+    /* Mobile nav */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(138, 154, 91, 0.95);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .nav-links li {
+        margin: 10px 0;
+        text-align: center;
+      }
+      .photos img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#details">Details</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#attire">Attire Guide</a></li>
+        <li><a href="#gifts">Gift Guide</a></li>
+        <li><a href="#rsvp">RSVP</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#location">Location Map</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="overlay">
+    <header id="home">
+      <h1>David John &amp; Vianney Ann</h1>
+      <p>Friday, December 5, 2025</p>
+    </header>
+
+    <!-- Images -->
+    <section id="story" class="section-box image-only hero">
+      <img src="photos/D&V-120.jpg" alt="David and Vianney" />
+    </section>
+    <section id="details" class="section-box image-only hero">
+      <img src="photos/8.png" alt="David and Vianney" />
+    </section>
+    <section id="lookaway" class="section-box image-only hero">
+      <img src="photos/D&V-92.jpg" alt="David and Vianney" />
+    </section>
+    <section id="timeline" class="section-box image-only hero">
+      <img src="photos/10.png" alt="David and Vianney" />
+    </section>
+    <section id="temple" class="section-box image-only hero">
+      <img src="photos/D&V-56.jpg" alt="David and Vianney" />
+    </section>
+    <section id="attire" class="section-box image-only hero">
+      <img src="photos/12.png" alt="David and Vianney" />
+    </section>
+    <section id="stairs" class="section-box image-only hero">
+      <img src="photos/D&V-117.jpg" alt="David and Vianney" />
+    </section>
+    <section id="gifts" class="section-box image-only hero">
+      <img src="photos/14.png" alt="David and Vianney" />
+    </section>
+    <section id="rsvp" class="section-box image-only hero">
+      <img src="photos/15.png" alt="David and Vianney" />
+      <div class="overlay-link">
+        <a href="https://forms.gle/tgJ78SwVPsSLVxxQ6" class="rsvp-button">RSVP Now</a>
+      </div>
+    </section>
+    <section id="faq" class="section-box image-only hero">
+      <img src="photos/16.png" alt="David and Vianney" />
+    </section>
+    <section id="location" class="section-box-new">
+      <h2>Location Map</h2>
+      <p>Navigate easily to our ceremony and reception venues using the maps below:</p>
+      <h3>Ceremony Venue – Immaculate Conception Cathedral of Cubao</h3>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3858.6590841812167!2d121.04853031488027!3d14.62130418979995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b7cd0407b3ff%3A0x5c384e4a9cf70890!2sImmaculate%20Conception%20Cathedral%20of%20Cubao!5e0!3m2!1sen!2sph!4v1693991741672!5m2!1sen!2sph"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+      <h3>Reception Venue – Oasis Manila Pavilion</h3>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.284352689971!2d121.03199971529262!3d14.613604589785982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b540265e31f5%3A0x4a64803ec5aeb206!2sOasis%20Manila%20Pavilion!5e0!3m2!1sen!2sph!4v1694000000000!5m2!1sen!2sph"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </section>
+    <section id="remarks" class="section-box image-only hero">
+      <img src="photos/20.png" alt="David and Vianney" />
+    </section>
+
+    <footer>
+      <p>We can't wait to celebrate this special day with you! 💚</p>
+    </footer>
+  </div>
+
+  <script>
+    // Animate sections on scroll
+    function revealSections() {
+      const sections = document.querySelectorAll('section');
+      const windowHeight = window.innerHeight;
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < windowHeight - 100) {
+          section.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', revealSections);
+    window.addEventListener('load', revealSections);
+
+    // Mobile menu toggle
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('show');
+    });
+  </script>
+</body>
+</html>
