@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <title>David & Vianney’s Wedding</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora&display=swap"
     rel="stylesheet"
@@ -79,6 +78,8 @@
       padding: 60px 20px;
       color: white;
     }
+
+    /* Typography */
     header h1{
       font-family: 'Playfair Display', serif;
       font-weight: 700;
@@ -87,20 +88,25 @@
       margin-bottom: 0;
       font-size: clamp(2em, 5vw, 3.5em);
     }
-    h3 {
-      font-family: 'Lemon Tuesday', cursive;
-      font-size: clamp(1.3em, 3.5vw, 2em);
-      color: #344336;
-      margin: 0;
-    }
     h2 {
       font-family: 'Blastine personal use', sans-serif;
-      font-size: clamp(1.8em, 4vw, 2.5em);
+      font-size: clamp(1.4em, 3vw, 2.5em);
       padding-top: 20px;
       padding-left: 5px;
       letter-spacing: 1px;
       line-height: 1.2;
       margin: 0;
+    }
+    h3 {
+      font-family: 'Lemon Tuesday', cursive;
+      font-size: clamp(1.2em, 2.5vw, 2em);
+      color: #344336;
+      margin: 0;
+    }
+    p {
+      font-family: 'Alice', serif;
+      font-size: clamp(0.95em, 2.2vw, 1.1em);
+      line-height: 1.6;
     }
     header p {
       font-size: clamp(1.2em, 3vw, 1.5em);
@@ -108,6 +114,7 @@
       font-family: 'Playfair Display', serif;
       margin-top: 10px;
     }
+
     section {
       padding: 40px 20px;
       max-width: 1200px;
@@ -120,6 +127,7 @@
       opacity: 1;
       transform: translateY(0);
     }
+
     .section-box {
       background-color: rgba(247, 231, 206, 0.9);
       border-radius: 12px;
@@ -151,6 +159,7 @@
       border-radius: 0;
       box-shadow: none;
     }
+
     .overlay-link {
       position: absolute;
       top: 60%;
@@ -162,8 +171,8 @@
       background-color: #344336;
       color: #fff;
       text-decoration: none;
-      padding: 16px 28px;
-      font-size: clamp(1em, 3.5vw, 1.2em);
+      padding: 14px 24px;
+      font-size: clamp(0.9em, 2.5vw, 1.2em);
       border-radius: 8px;
       font-family: 'Alice', serif;
       transition: background-color 0.3s ease;
@@ -171,11 +180,7 @@
     .rsvp-button:hover {
       background-color: #4b5e45;
     }
-    p {
-      font-family: 'Alice', serif;
-      font-size: clamp(1em, 2.5vw, 1.1em);
-      line-height: 1.6;
-    }
+
     .photos {
       display: flex;
       flex-wrap: wrap;
@@ -194,6 +199,7 @@
     .photos img:hover {
       transform: scale(1.05);
     }
+
     form input,
     form textarea {
       width: 100%;
@@ -217,6 +223,7 @@
     form button:hover {
       background-color: #6e7f44;
     }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -269,8 +276,11 @@
         display: flex;
       }
       .nav-links li {
-        margin: 15px 0;
+        margin: 10px 0;
         text-align: center;
+      }
+      header {
+        padding: 40px 15px;
       }
       .section-box,
       .section-box-new {
@@ -283,16 +293,24 @@
 
     /* Extra small screens */
     @media (max-width: 480px) {
-      header {
-        padding: 40px 15px;
-      }
       header h1 {
         font-size: 1.8em;
+      }
+      h2 {
+        font-size: 1.2em;
+      }
+      h3 {
+        font-size: 1em;
+      }
+      p {
+        font-size: 0.9em;
       }
       .rsvp-button {
         width: 100%;
         display: block;
         text-align: center;
+        font-size: 1em;
+        padding: 12px 20px;
       }
       footer p {
         font-size: 0.9em;
